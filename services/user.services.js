@@ -17,3 +17,8 @@ export const createUser = async (user) => {
 
   return newUser.save();
 };
+
+export const findUser = async (email) => {
+  const user = await UserModel.findOne({ email }).select('+password');
+  return user;
+};
