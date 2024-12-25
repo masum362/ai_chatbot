@@ -38,8 +38,8 @@ userSechema.methods.comparePassword = async function(password) {
 };
 
 userSechema.methods.generateToken = function () {
-  const token = jwt.sign({ email: this.email }, process.env.SECRET_KEY, {
-    expiresIn: "1h",
+  const token = jwt.sign({ id: this._id }, process.env.SECRET_KEY, {
+    expiresIn: "24h",
   });
   return token;
 };

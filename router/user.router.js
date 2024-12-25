@@ -30,5 +30,6 @@ router.post(
 );
 
 router.get("/user", protect, userControllers.getUser);
+router.get("/logout", protect, userControllers.logOutUser);
 
 export default router;

@@ -22,3 +22,8 @@ export const findUser = async (email) => {
   const user = await UserModel.findOne({ email }).select('+password');
   return user;
 };
+
+export const findUserById = async (id) => {
+  const user = await UserModel.findById(id)
+  return user;
+}
