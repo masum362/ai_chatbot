@@ -19,6 +19,7 @@ export const protect = async (req, res, next) => {
     }
 
     req.user = user;
+    req.userId = decoded.id;
     next();
   } catch (error) {
     res.status(400).json({ message: error.message });

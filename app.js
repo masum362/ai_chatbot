@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./router/user.router.js";
+import projectRouter from "./router/project.route.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.use("/api/user", userRouter);
+app.use("/api/users", userRouter);
+app.use("/api/projects", projectRouter);
 
 export default app;
