@@ -5,6 +5,9 @@ import { body } from "express-validator";
 
 const router = Router();
 
+
+router.get("/all", protect, projectControllers.getUserProjects);
+
 router.post(
   "/create",
   body("name")
@@ -15,5 +18,8 @@ router.post(
   projectControllers.createProject
 );
 
+
+
+router.post("/add-user", protect, projectControllers.addUserToProject);
 
 export default router;
