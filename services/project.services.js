@@ -57,3 +57,10 @@ export const addUserToProject = async (projectId, users, userId) => {
 
   return updatedProject;
 };
+
+export const getProjectById = (projectId, userId) => {
+  return projectModel.findOne({
+    _id: projectId,
+    users: userId,
+  });
+};
