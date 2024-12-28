@@ -17,6 +17,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
-app.use("/api/projects", projectRouter);
+app.use("/api/project", projectRouter);
 
 export default app;
