@@ -10,7 +10,7 @@ export const createProject = (name, userId) => {
 };
 
 export const getUserProjects = (userId) => {
-  return projectModel.find({ users: userId });
+  return projectModel.find({ users: userId }).populate("users");
 };
 
 export const addUserToProject = async (projectId, users, userId) => {
@@ -62,5 +62,5 @@ export const getProjectById = (projectId, userId) => {
   return projectModel.findOne({
     _id: projectId,
     users: userId,
-  });
+  }).populate("users");
 };
