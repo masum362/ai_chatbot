@@ -1,4 +1,3 @@
-
 import { validationResult } from "express-validator";
 import * as userServices from "../services/user.services.js";
 import redisClient from "../services/redis.service.js";
@@ -65,6 +64,15 @@ export const logOutUser = async (req, res) => {
     redisClient.set(token, "logout", "EX", 60 * 60 * 24);
 
     return res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userServices.getAllUsers();
+    return res.status(200).json(users);
   } catch (error) {
     return res.status(404).json({ message: error.message });
   }

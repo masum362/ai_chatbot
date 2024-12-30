@@ -5,6 +5,7 @@ import { protect } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
+router.get("/all", protect, userControllers.getAllUsers);
 router.post(
   "/register",
   body("name")

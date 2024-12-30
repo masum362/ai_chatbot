@@ -19,11 +19,16 @@ export const createUser = async (user) => {
 };
 
 export const findUser = async (email) => {
-  const user = await UserModel.findOne({ email }).select('+password');
+  const user = await UserModel.findOne({ email }).select("+password");
   return user;
 };
 
 export const findUserById = async (id) => {
-  const user = await UserModel.findById(id)
+  const user = await UserModel.findById(id);
   return user;
-}
+};
+
+export const getAllUsers = async () => {
+  const users = await UserModel.find({});
+  return users;
+};
