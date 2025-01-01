@@ -19,7 +19,7 @@ router.post(
 );
 
 router.post(
-  "/add-user",
+  "/add-users",
   body("projectId").isString().withMessage("Project Id is required"),
   body("users").isArray().withMessage("Users must be an array of user Ids"),
   protect,
