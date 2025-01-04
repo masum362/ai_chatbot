@@ -9,7 +9,13 @@ import jwt from "jsonwebtoken";
 
 const port = process.env.PORT || 3000;
 
-const io = new Server(server);
+const io = new Server(server
+  ,{
+  cors:{
+    origin:"*",
+  }
+}
+);
 
 io.use((socket, next) => {
   try {
@@ -31,12 +37,13 @@ io.use((socket, next) => {
   }
 });
 
-io.on("connection", (client) => {
-  console.log("connection");
-  client.on("event", (data) => {
+io.on("connection", (socket) => {
+
+  console.log("a user connected");
+  socket.on("event", (data) => {
     console.log("event", data);
   });
-  client.on("disconnect", () => {
+  socket.on("disconnect", () => {
     console.log("disconnect");
   });
 });
