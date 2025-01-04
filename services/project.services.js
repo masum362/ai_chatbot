@@ -39,28 +39,40 @@ export const addUserToProject = async (projectId, users, userId) => {
     throw new Error("Not Authorized");
   }
 
-  const updatedProject = await projectModel.findOneAndUpdate(
-    {
-      _id: projectId,
-    },
-    {
-      $addToSet: {
-        users: {
-          $each: users,
+  const updatedProject = await projectModel
+    .findOneAndUpdate(
+      {
+        _id: projectId,
+      },
+      {
+        $addToSet: {
+          users: {
+            $each: users,
+          },
         },
       },
-    },
-    {
-      new: true,
-    }
-  ).populate("users");
+      {
+        new: true,
+      }
+    )
+    .populate("users");
 
   return updatedProject;
 };
 
 export const getProjectById = (projectId, userId) => {
-  return projectModel.findOne({
-    _id: projectId,
-    users: userId,
-  }).populate("users");
+  if (userId) {
+    return projectModel
+      .findOne({
+        _id: projectId,
+        users: userId,
+      })
+      .populate("users");
+  }
+
+  return projectModel
+    .findOne({
+      _id: projectId,
+    })
+    .populate("users");
 };
