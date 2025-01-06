@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as projectControllers from "../controllers/project.controller.js";
+import * as projectControllers from "../controllers/project.controllers.js";
 import { protect } from "../middleware/auth.middleware.js";
 import { body } from "express-validator";
 
